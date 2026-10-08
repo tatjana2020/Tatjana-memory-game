@@ -2,7 +2,7 @@
 
 ### By: Tatjana Markovic
 
-#### [Portfolio](https:// ) | [GitHub](https://github.com//tatjana2020) | [LinkedIn](https:/tatjana-markovi%C4%87-b668bb44/)
+#### [Portfolio](https:// ) | [GitHub](https://github.com//tatjana2020) | [LinkedIn](https://www.linkedin.com/feed/)
 #### Date: 8/10/2026
 ***
 
