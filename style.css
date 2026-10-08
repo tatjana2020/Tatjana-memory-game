@@ -1,4 +1,3 @@
-/* ===== Boje: svijetli mod (podrazumijevan) ===== */
 :root {
     --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --container-bg: rgba(255, 255, 255, 0.95);
@@ -21,7 +20,6 @@
     --toggle-text: #764ba2;
 }
 
-/* ===== Boje: tamni mod (crna pozadina, bijeli tekst) ===== */
 [data-theme="dark"] {
     --bg: #000000;
     --container-bg: #000000;
@@ -178,7 +176,6 @@ h1 {
     box-shadow: 0 6px 15px rgba(118, 75, 162, 0.4);
 }
 
-/* ===== Poruka (dobro / nisu iste) ===== */
 .message {
     min-height: 40px;
     margin: 10px 0;
@@ -201,7 +198,6 @@ h1 {
     color: var(--error);
 }
 
-/* ===== Dugmad ===== */
 .controls {
     text-align: center;
 }
@@ -227,7 +223,6 @@ button:active {
     transform: translateY(0);
 }
 
-/* ===== Poruka o pobjedi ===== */
 .win-message {
     display: none;
     position: absolute;
@@ -275,7 +270,6 @@ button:active {
     }
 }
 
-/* ===== Nivoi ===== */
 .levels {
     display: flex;
     flex-wrap: wrap;
@@ -299,7 +293,6 @@ button:active {
     color: var(--level-active-text);
 }
 
-/* ===== Dugme za promjenu moda ===== */
 .theme-toggle {
     position: fixed;
     top: 16px;
@@ -316,7 +309,6 @@ button:active {
     z-index: 200;
 }
 
-/* ===== Responsivnost ===== */
 img {
     max-width: 100%;
 }
