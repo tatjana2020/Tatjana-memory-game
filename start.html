@@ -3,16 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory game</title>
-    <link rel="stylesheet" href="styls.css">
-    <script src="theme.js"></script>
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+     <script src="theme.js"></script>
 </head>
 <body>
     <button id="themeToggle" class="theme-toggle"></button>
-    <h1>Tatjana Memory game</h1>
-    <p id="description"> The memory game, is designed to test and improve a player's visual recall. Players take turns flipping over two cards from a face-down grid, trying to find identical pairs by remembering the locations of previously revealed cards. The game continues until all pairs have been successfully matched. </p>
+    <div class="container">
+        <h1>Memory Game</h1>
+        <p class="level">Choose a level and good luck!</p>
 
-    <p id="description">Choose a level and good luck!</p>
-    <a class="play-btn" href="index.html">PLAY</a>
+        <div class="stats">
+            <div class="stat">
+                <span class="label">Moves:</span>
+                <span id="moves">0</span>
+            </div>
+            <div class="stat">
+                <span class="label">Time:</span>
+                <span id="timer">00:00</span>
+            </div>
+            <div class="stat">
+                <span class="label">Pairs:</span>
+                <span id="pairs">0 / 5</span>
+            </div>
+        </div>
+        <div class="levels">
+            <button class="level-btn active" data-level="1">Level 1</button>
+            <button class="level-btn" data-level="2">Level 2</button>
+            <button class="level-btn" data-level="3">Level 3</button>
+        </div>
+        <div id="message" class="message"></div>
+        <div class="game-board" id="gameBoard"></div>
+
+        <div class="controls">
+            <button id="restartBtn"> New Game </button>
+        </div>
+
+        <div class="win-message" id="winMessage">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <p>You won in <span id="finalMoves">0</span> moves and <span id="finalTime">00:00</span>!</p>
+            <button id="playAgainBtn">Play Again</button>
+        </div>
+    </div>
+    <script src="base.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
