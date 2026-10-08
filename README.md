@@ -3,7 +3,7 @@
 ### By: Tatjana Markovic
 
 #### [Portfolio](https:// ) | [GitHub](https://github.com//tatjana2020) | [LinkedIn](https:/tatjana-markovi%C4%87-b668bb44/)
-#### Date: 9/10/2026
+#### Date: 8/10/2026
 ***
 
 ### ***Description***
@@ -14,6 +14,7 @@ The memory game, is a card game designed to test and improve a player's visual r
 * Javascript
 * HTML
 * CSS
+* GitHub
 
 ***
 
@@ -37,15 +38,21 @@ The memory game, is a card game designed to test and improve a player's visual r
 ### ***Screenshots***
 
 ##### Journey homepage
-![gameboard](https://i.imgur.com/slika pocetka)
+![gameboard](Start.jpg)
+
+![Begining1](Begining_1.png)
+
+![Begining2](Begining_2.jpeg)
+
+![Begining3](Begining_3.jpeg)
+
+![EndPhoto](End_photo_3.jpeg)
 
 ##### Journey gameboard
-![gameboard](https://i.imgur.com/slika kraja)
+![Lara](Lara.png)
 ***
 
 ### ***Credits***
-#### Support and Help: SEI-DRY @ GA
-#### Pictures: [DuckDuckGo Search](http://www.duckduckgo.com)
-#### Die animation: [ClipArt](http://www.clipartbest.com/clipart-acq6e87oi)
-#### Background: [Wallpapersden](https://wallpapersden.com/desert-sun-day-minimalism-wallpaper/3840x2400/)
+#### Support and Help: 
+course - Software Engineering Bootcamp - General Assembly
 

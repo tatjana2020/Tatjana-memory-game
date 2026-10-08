@@ -1,3 +1,49 @@
+/* ===== Boje: svijetli mod (podrazumijevan) ===== */
+:root {
+    --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --container-bg: rgba(255, 255, 255, 0.95);
+    --text: #333333;
+    --title: #333333;
+    --accent: #764ba2;
+    --stats-bg: #f0f0f0;
+    --label: #666666;
+    --card-front-bg: #ffffff;
+    --matched-bg: #d4edda;
+    --matched-border: #28a745;
+    --win-bg: #ffffff;
+    --win-text: #666666;
+    --level-bg: #ffffff;
+    --level-text: #764ba2;
+    --level-active-text: #ffffff;
+    --success: #04842b;
+    --error: #d40404;
+    --toggle-bg: #ffffff;
+    --toggle-text: #764ba2;
+}
+
+/* ===== Boje: tamni mod (crna pozadina, bijeli tekst) ===== */
+[data-theme="dark"] {
+    --bg: #000000;
+    --container-bg: #000000;
+    --text: #ffffff;
+    --title: #ffffff;
+    --accent: #b794f6;
+    --stats-bg: #1a1a1a;
+    --label: #cccccc;
+    --card-front-bg: #1a1a1a;
+    --matched-bg: #12361f;
+    --matched-border: #4ade80;
+    --win-bg: #111111;
+    --win-text: #eeeeee;
+    --level-bg: #000000;
+    --level-text: #ffffff;
+    --level-active-text: #000000;
+    --success: #4ade80;
+    --error: #ff6b6b;
+    --toggle-bg: #ffffff;
+    --toggle-text: #000000;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,32 +52,35 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--container-bg);
     padding: 0px;
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
     position: relative;
+    transition: background 0.3s;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--title);
     margin-bottom: 5px;
     font-size: 2rem;
 }
 
 .level {
     text-align: center;
-    color: #764ba2;
+    color: var(--accent);
     font-weight: bold;
     margin-bottom: 20px;
     font-size: 0.95rem;
@@ -42,7 +91,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     margin-bottom: 25px;
-    background: #f0f0f0;
+    background: var(--stats-bg);
     border-radius: 12px;
     padding: 0px;
 }
@@ -54,14 +103,14 @@ h1 {
 .stat .label {
     display: block;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--label);
     margin-bottom: 5px;
 }
 
 .stat span:last-child {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #764ba2;
+    color: var(--accent);
 }
 
 .game-board {
@@ -70,6 +119,7 @@ h1 {
     gap: 0px;
     margin-bottom: 25px;
     perspective: 1000px;
+    border-radius: 12px;
 }
 
 .card {
@@ -85,7 +135,6 @@ h1 {
 }
 
 .card.matched {
-    animation: matchPulse 0.6s ease;
     pointer-events: none;
 }
 
@@ -98,7 +147,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 6vw, 2.5rem);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -114,14 +163,14 @@ h1 {
 }
 
 .card-front {
-    background: white;
+    background: var(--card-front-bg);
     transform: rotateY(180deg);
-    border: 3px solid #764ba2;
+    border: 3px solid var(--accent);
 }
 
 .card.matched .card-front {
-    background: #d4edda;
-    border-color: #28a745;
+    background: var(--matched-bg);
+    border-color: var(--matched-border);
 }
 
 .card:not(.flipped):not(.matched):hover .card-back {
@@ -129,6 +178,30 @@ h1 {
     box-shadow: 0 6px 15px rgba(118, 75, 162, 0.4);
 }
 
+/* ===== Poruka (dobro / nisu iste) ===== */
+.message {
+    min-height: 40px;
+    margin: 10px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.message.show {
+    opacity: 1;
+}
+
+.message.success {
+    color: var(--success);
+}
+
+.message.error {
+    color: var(--error);
+}
+
+/* ===== Dugmad ===== */
 .controls {
     text-align: center;
 }
@@ -154,20 +227,21 @@ button:active {
     transform: translateY(0);
 }
 
+/* ===== Poruka o pobjedi ===== */
 .win-message {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: var(--win-bg);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     z-index: 100;
     animation: popIn 0.5s ease;
-    min-width: 300px;
+    width: min(90%, 340px);
 }
 
 .win-message.show {
@@ -175,34 +249,136 @@ button:active {
 }
 
 .win-message h2 {
-    color: #764ba2;
+    color: var(--accent);
     margin-bottom: 15px;
 }
 
 .win-message p {
-    color: #666;
+    color: var(--win-text);
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
 
 .win-message span {
     font-weight: bold;
-    color: #764ba2;
-}
-#gameBoard {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 12px;
+    color: var(--accent);
 }
 
-.card.gone {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
-#gameBoard.revealed {
-    gap: 0;
+/* ===== Nivoi ===== */
+.levels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.level-btn {
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    background: var(--level-bg);
+    color: var(--level-text);
+    cursor: pointer;
+}
+
+.level-btn.active {
+    background: var(--accent);
+    color: var(--level-active-text);
+}
+
+/* ===== Dugme za promjenu moda ===== */
+.theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--toggle-text);
+    background: var(--toggle-bg);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    z-index: 200;
+}
+
+/* ===== Responsivnost ===== */
+img {
+    max-width: 100%;
+}
+
+.stats {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .stats {
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    .stat .label {
+        font-size: 0.75rem;
+    }
+
+    .stat span:last-child {
+        font-size: 1.1rem;
+    }
+
+    .card-face {
+        border-radius: 8px;
+    }
+
+    .card-front {
+        border-width: 2px;
+    }
+
+    .message {
+        font-size: 1.1rem;
+        min-height: 32px;
+    }
+
+    .level-btn {
+        padding: 6px 14px;
+        font-size: 0.95rem;
+    }
+
+    button {
+        padding: 10px 24px;
+    }
+
+    .win-message {
+        padding: 24px;
+    }
+
+    .theme-toggle {
+        top: 8px;
+        right: 8px;
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
 }
