@@ -10,7 +10,10 @@ const mobileQuery = window.matchMedia('(max-width: 600px)');
  
 let currentLevel = 1;
 let totalPairs = 0;
+
 const skokZvuk = new Audio('zvuk1.mp3');
+const skokZvuk2 = new Audio('zvuk2.mp3');
+
 let cards = [];
 let flippedCards = [];
 let matchedPairs = 0;
@@ -194,7 +197,9 @@ function checkMatch() {
         pairsEl.textContent = `${matchedPairs} / ${totalPairs}`;
         flippedCards = [];
         showMessage('Good choice! ✅', 'success');
- 
+        skokZvuk2.currentTime = 0; 
+        skokZvuk2.play();
+        
         setTimeout(() => {
             revealSlice(card1);
             revealSlice(card2);
