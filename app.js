@@ -10,7 +10,7 @@ const mobileQuery = window.matchMedia('(max-width: 600px)');
  
 let currentLevel = 1;
 let totalPairs = 0;
- 
+const skokZvuk = new Audio('zvuk1.mp3');
 let cards = [];
 let flippedCards = [];
 let matchedPairs = 0;
@@ -239,6 +239,8 @@ function endGame() {
         cards.forEach(card => (card.style.borderRadius = '0'));
         finalMoves.textContent = moves;
         finalTime.textContent = timerEl.textContent;
+        skokZvuk.currentTime = 0; 
+        skokZvuk.play();
         winMessage.classList.add('show');
     }, 1200);
 }
