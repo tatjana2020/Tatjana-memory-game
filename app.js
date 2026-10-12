@@ -12,7 +12,7 @@ let currentLevel = 1;
 let totalPairs = 0;
 
 const skokZvuk = new Audio('zvuk1.mp3');
-const skokZvuk2 = new Audio('zvuk2.mp3');
+const clap = new Audio('zvuk2.mp3');
 
 let cards = [];
 let flippedCards = [];
@@ -197,8 +197,8 @@ function checkMatch() {
         pairsEl.textContent = `${matchedPairs} / ${totalPairs}`;
         flippedCards = [];
         showMessage('Good choice! ✅', 'success');
-        skokZvuk2.currentTime = 0; 
-        skokZvuk2.play();
+        clap.currentTime = 0; 
+        clap.play();
         
         setTimeout(() => {
             revealSlice(card1);
