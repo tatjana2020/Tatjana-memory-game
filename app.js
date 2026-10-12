@@ -196,9 +196,10 @@ function checkMatch() {
         matchedPairs++;
         pairsEl.textContent = `${matchedPairs} / ${totalPairs}`;
         flippedCards = [];
-        showMessage('Good choice! ✅', 'success');
         clap.currentTime = 0; 
         clap.play();
+        clap.play();
+        showMessage('Good choice! ✅', 'success');
         
         setTimeout(() => {
             revealSlice(card1);
